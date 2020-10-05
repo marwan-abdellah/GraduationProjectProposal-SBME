@@ -1,0 +1,181 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Latex template for graduation project proposal. 
+%
+% Author(s):
+% Marwan Abdellah (abdellah.marwan@gmail.com)
+%
+% License:
+% MIT License 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\documentclass[12pt]{article} 				% Generate the final document 
+% \documentclass[draft, 12pt]{article} 	% Testing the document without images 
+
+% Load the structure of the template article.
+\input{structure.tex}
+
+% Let's begin the document. 
+\begin{document}
+
+\begin{titlepage}
+	%------------------------------------------------------------------------ 
+	\vspace{7cm}
+	\centering{\large Graduation Project Proposal} \\ [2 cm]
+	%------------------------------------------------------------------------
+	
+	%------------------------------------------------------------------------
+	\begin{minipage}{\textwidth}
+		\centering{\Large {Project Title}}  \\
+		\centering{\normalsize {Project Subtitle, if exists}}
+		
+	\end{minipage}
+	%------------------------------------------------------------------------
+	
+	%------------------------------------------------------------------------
+	\vspace{3 cm}
+	\centering{\large {Author}} \\
+	\centering \small {\textit{author@email.com}}
+	%------------------------------------------------------------------------
+	
+	\vspace{3 cm}
+	%------------------------------------------------------------------------
+	% Logos
+	\begin{figure}[h!]
+		\centering 
+		\includegraphics[scale=0.3]{sbme}  \\ [5 pt]
+	\end{figure}
+	
+	\centering{\small {Systems \& Biomedical Engineering Department}} \\
+	\centering{\small {Faculty of Engineering}} \\
+	\centering{\small {Cairo University}}
+	
+	\vspace{3cm}
+	\centering {\small \today} 
+	
+\end{titlepage}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Lists 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\thispagestyle{empty}
+
+% Add the table of contents, or comment it. 
+\tableofcontents
+
+% Add the list of figures, or comment it. 
+\listoffigures
+ 
+% Add the list of tables, or comment it. 
+\listoftables
+
+% Define the list of acronyms and add them. 
+\newpage
+\input{acronyms.tex}
+
+\clearpage
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Restore normal font if any interruptions. 
+\normalfont 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Introduction 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Background} \label{section:background}
+\textbf{Add two to three paragraphs to introduce the problem and its relevant background.}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%	Statement
+\section{Problem Statement \& Objectives} \label{section:problem-statement}
+\textbf{Define the problem in detail in two to three paragraphs. It is also required to use graphical illustrations when possible, for example Figure~\ref{figure:distributed-volume-rendering} and Figure~\ref{figure:rendering-sequence-diagram}. }
+
+\begin{figure}[h!]
+\centering 
+\includegraphics[width=17cm]{distributed-volume-rendering}
+\caption{Sample Figure. \textbf{Distributed volume rendering}. The rendering load is distributed across a network of slave computing nodes controlled by a master node.}
+\label{figure:distributed-volume-rendering}
+\end{figure}
+
+\begin{figure}[h!]
+\centering 
+\includegraphics[width=16cm]{rendering-sequence-diagram}
+\caption{A sequence diagram showing the communication and interaction between the different computing nodes in the system.}
+\label{figure:rendering-sequence-diagram}
+\end{figure}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%	Intended Learning objectives
+\section{Intended Learning Objectives} \label{section:objectives}
+\textbf{Define the ILOs of the project and what are the topics, tools, and methods the students will learn by the end of the graduation project. Enumeration is better. An example is given below.}
+
+\vspace*{1cm}
+
+Upon a successful completion of this project, the contributing students are expected to learn and get acquainted with the following 
+\begin{enumerate}
+\item Computer graphics concepts, visualization techniques and rendering algorithms~\cite{volume-rendering}. 
+\item High performance computing concepts~\cite{what-is-hpc}.  
+\item Network programming and distributed computing~\cite{client-server-model}.
+\item Principles of heterogeneous computing~\cite{heterogeneous-computing}.
+\item \acs{HPC} toolkits such as \acs{OpenCL}~\cite{opencl} and \acs{CUDA}~\cite{cuda}.
+\item Optimization techniques. 
+\item The \acs{OpenGL}~\cite{opengl} rendering pipeline and the interoperability between rendering and compute contexts on the \acs{GPU}.
+\item Software engineering~\cite{software-engineering} and principles of code design and refactoring~\cite{refactoring}.
+\item Code tractability and maintainability via software version control applications~\cite{version-control}. 
+\item Software build systems\cite{software-build}. 
+\end{enumerate} 
+  
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Expected Deliverables
+\section{Expected Deliverables} \label{section:expected-deliverables}
+
+\textbf{List all expected deliverables of the project including software frameworks, hardware designs, documentations or papers. An example is given below.}
+
+\subsection{Software}
+
+The developed framework is expected to be composed of 
+\begin{enumerate}
+\item a server application that configures and controls the client nodes for rendering large volume dataset on a given set of computing nodes with specified \acs{IP}s interconnected via a local network hub.
+\item a configurable user interface designed in Qt to select among the different rendering kernels.
+\item a statistical performance analysis library for evaluating the rendering performance of the different platforms.
+\end{enumerate}
+
+After the defense, the framework will be released and open-sourced to an open repository on GitHub~\cite{github}.
+
+\subsection{Documentation}
+\begin{enumerate}
+\item Automatically-generated code documentation using Doxygen~\cite{doxygen}.
+\item Project documentation written in \LaTeX.
+\end{enumerate}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Supervision & Management
+\section{Supervision \& Management} \label{section:supervision-and-management}
+\textbf{Define the logistics of the project including the frequency of the follow uo meetings, code review, or other interactions depending on the project. An example is given below.}
+
+\vspace*{1cm}
+
+\subsection{Followup Meetings}
+There will be a followup meeting with the supervisors on a biweekly basis. Every meeting will be summarized in a short report of maximum two pages. 
+
+\subsection{Software Management Policy}
+\begin{itemize}
+\item The code will be based on the CMake~\cite{cmake} build system. 
+\item The code will be initially developed under Linux (Ubuntu 14.04 or Ubuntu 15.04). The code will be ported later to Mac OSX and Microsoft Windows if the time permits. 
+\item The code will be written in C/C++ \& Python.
+\item The code will be written in OpenCL/OpenGL.
+\item The code will be hosted on Bitbucket.com~\cite{bitbucket}
+\item The individual contributions will not be merged into the master branch of the repository until the code is reviewed and accepted by the supervisor.
+\item After the successful completion of the project, the code will be tested and uploaded to github.com~\cite{github}. 
+\end{itemize}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% References 
+\newpage
+
+% Plain style 
+\bibliographystyle{unsrt}		
+
+% The input .bib file
+\bibliography{references}	 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end{document}
